@@ -5,19 +5,17 @@ import com.huellitas.backend.entities.Vet;
 
 public class VetConverter extends Converter<Vet, VetData> {
 
-    private MascotaConverter MascotaConverter = new MascotaConverter();
-
     @Override
     public Vet toEntity(VetData object) {
         return object == null ? null : Vet.builder()
             .id(object.getId())
-            .identificacion(object.getIdentificacion())
+            .cedula(object.getCedula())
             .nombre(object.getNombre())
-            .apellido(object.getApellido())
+            .Usuario(object.getUsuario())
             .telefono(object.getTelefono())
-            .tarjeta(object.getTarjeta())
+            .Matricula(object.getMatricula())
             .password(object.getPassword())
-            .Mascota(MascotaConverter.toEntity(object.getMascota()))
+            .email(object.getEmail())
             .build();
     }
 
@@ -25,14 +23,14 @@ public class VetConverter extends Converter<Vet, VetData> {
     public VetData toData(Vet object) {
         return object == null ? null : VetData.builder()
         .id(object.getId())
-            .identificacion(object.getIdentificacion())
-            .nombre(object.getNombre())
-            .apellido(object.getApellido())
-            .telefono(object.getTelefono())
-            .tarjeta(object.getTarjeta())
-            .password(null)
-            .Mascota(MascotaConverter.toData(object.getMascota()))
-            .build();
+        .cedula(object.getCedula())
+        .nombre(object.getNombre())
+        .Usuario(object.getUsuario())
+        .telefono(object.getTelefono())
+        .Matricula(object.getMatricula())
+        .password(null)
+        .email(object.getEmail())
+        .build();
     }
 
 }

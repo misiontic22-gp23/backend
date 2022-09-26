@@ -5,17 +5,16 @@ import com.huellitas.backend.entities.Dueno;
 
 public class DuenoConverter extends Converter<Dueno, DuenoData> {
 
-    private MascotaConverter MascotaConverter = new MascotaConverter();
-
     @Override
     public Dueno toEntity(DuenoData object) {
         return object == null ? null : Dueno.builder()
             .id(object.getId())
-            .identificacion(object.getIdentificacion())
+            .cedula(object.getCedula())
             .nombre(object.getNombre())
-            .apellido(object.getApellido())
+            .Usuario(object.getUsuario())
             .telefono(object.getTelefono())
-            .Mascota(MascotaConverter.toEntity(object.getMascota()))
+            .email(object.getEmail())
+            .password(object.getPassword())
             .build();
     }
 
@@ -23,11 +22,12 @@ public class DuenoConverter extends Converter<Dueno, DuenoData> {
     public DuenoData toData(Dueno object) {
         return object == null ? null : DuenoData.builder()
             .id(object.getId())
-            .identificacion(object.getIdentificacion())
+            .cedula(object.getCedula())
             .nombre(object.getNombre())
-            .apellido(object.getApellido())
+            .Usuario(object.getUsuario())
             .telefono(object.getTelefono())
-            .Mascota(MascotaConverter.toData(object.getMascota()))
+            .email(object.getEmail())
+            .password(null)
             .build();
     }
 

@@ -13,9 +13,10 @@ import lombok.Setter;
 @Builder
 public class DuenoData {
     private int id;
-    private double identificacion;
+    private double cedula;
     private String nombre;
-    private String apellido;
+    private String Usuario;
     private double telefono;
-    private MascotaData Mascota;
+    private String email;
+    private String password;
 }

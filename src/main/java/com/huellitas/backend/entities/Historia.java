@@ -21,29 +21,41 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Mascota {
-    
+public class Historia {
+
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(nullable = false)
-    private String Nombre;
-
-    @Column(nullable = true)
-    private String Especie;
-
-    @Column(nullable = false)
-    private int Edad;
-
-    @Column(nullable = false)
-    private String Sexo;
-
-    @Column(nullable = false)
-    private String Foto;
+    private Cita Cita;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(nullable = true)
-    private Dueno dueno;
+    @JoinColumn(nullable = false)
+    private Dueno Dueno;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(nullable = false)
+    private Mascota Mascota;
+
+    @Column(nullable = false)
+    private int temperatura;
+
+    @Column(nullable = false)
+    private int peso;
+
+    @Column(nullable = false)
+    private int frecuenciaCardiaca;
+
+    @Column(nullable = false)
+    private int frecuenciaRespiratoria;
+
+    @Column(nullable = false)
+    private String recomendaciones;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(nullable = false)
+    private Vet veterinario;
 }

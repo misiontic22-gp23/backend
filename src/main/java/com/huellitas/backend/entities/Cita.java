@@ -1,12 +1,16 @@
 package com.huellitas.backend.entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,29 +23,27 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Dueno {
-
+public class Cita {
+    
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false)
-    private String nombre;
-
-    @Column(nullable = false)
-    private double cedula;
-
-    @Column(nullable = false)
-    private double telefono;
-
     @Column(nullable = false, unique = true)
-    private String email;
+    private Date Fecha;
 
-    @Column(nullable = false, unique = true)
-    private String Usuario;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(nullable = false)
+    private Vet veterinario;
 
-    @Getter(value = AccessLevel.NONE)
     @Column(nullable = false)
-    private String password;
+    private String Tipo;
+
+    @Column(nullable = false)
+    private String Observacion;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(nullable = false)
+    private Mascota Mascota;
 }

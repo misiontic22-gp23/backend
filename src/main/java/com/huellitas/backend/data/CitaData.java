@@ -1,5 +1,7 @@
 package com.huellitas.backend.data;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,13 +13,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class VetData {
+public class CitaData {
     private int id;
-    private double cedula;
-    private String nombre;
-    private String Usuario;
-    private double telefono;
-    private double Matricula;
-    private String password;
-    private String email;
+    private Date Fecha;
+    private VetData veterinario;
+    private String Tipo;
+    private String Observacion;
+    private MascotaData Mascota;
 }
